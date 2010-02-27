@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+\usepackage{hyperref}
+\title{Programming Assignment 2}
+\author{Aditya Khosla \& Shrey Gupta}
+\date{February 23, 2010}
+\begin{document}
+\maketitle
+
+\paragraph{Answer 1} 
+
+\[
+\begin{array}{l}
+ {\sigma ^{( \cdot t + 1)}}({X^{(t + 1)}},M) = P({X^{(t + 1)}},M|{D^{(1:t)}}, {H^{1:t}}) \\ 
+  = \sum\limits_{{X^{(t)}}} {P({X^{(t + 1)}}|{X^{(t)}},{H^{(1:t)}},M,{D^{(1:t)}})} P({X^{(t)}},M|{D^{(1:t)}}, {H^{1:t}}) \\ 
+  = \sum\limits_{{X^{(t)}}} {P({X^{(t + 1)}}|{X^{(t)}},{H^{(t)}}){\sigma ^{(t)}}({X^{(t)}},M)}  \\ 
+ \end{array}
+ 
+ \]
+ 
+ ${H^{(t)}}$ and observations corresponding to sensor readings$(D_k^{(t)})$ are already provided to us. \\
+\paragraph{Answer 2} 
+
+\[\begin{array}{l}
+ {\sigma ^{(t + 1)}}({X^{(t + 1)}},M) = P({X^{(t + 1)}},M|{D^{(1:t)}},{D^{(t + 1)}}) \\ 
+  = \frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M,{D^{(1:t)}})P({X^{(t + 1)}},M|{D^{(1:t)}})}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ 
+  = \frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M){\sigma ^{( \cdot t + 1)}}({X^{(t + 1)}},M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ 
+ \end{array}\]
+
+\paragraph{Answer 3}
+
+\[\begin{array}{l}
+ \begin{array}{*{20}{c}}
+   {\sigma {'^{(\cdot t + 1)}}({X^{(t + 1)}},M) = P({X^{(t + 1)}},M|{D^{(1:t)}})}  \\
+   { = \sum\limits_{{X^{(t)}}} {P({X^{(t + 1)}},M|{X^{(t)}},M,{D^{(1:t)}})} P({X^{(t)}},M|{D^{(1:t)}})}  \\
+   \begin{array}{l}
+  = \sum\limits_{{X^{(t)}}} {P({X^{(t + 1)}},|{X^{(t)}},{H^{(t)}})\sigma {'^{(t)}}({X^{(t)}},M)}  \\ 
+  = \left( {\sum\limits_{{X^{(t)}}} {P({X^{(t + 1)}},|{X^{(t)}},{H^{(t)}})\sigma {'^{(t)}}({X^{(t)}})} } \right)\sigma {'^{(t)}}(M) \\ 
+ \end{array}  \\
+\end{array} \\ 
+  = \sigma {'^{(\cdot t + 1)}}({X^{(t + 1)}})\sigma {'^{(t)}}(M) \\ 
+ \end{array}\]
+ 
+\paragraph{Answer 4}
+
+\[\begin{array}{*{20}{c}}
+   {{\sigma ^{'(t + 1)}}({X^{(t + 1)}},M) = P({X^{(t + 1)}},M|{D^{(1:t)}},{D^{(t + 1)}})}  \\
+   { = \frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M,{D^{(1:t)}})P({X^{(t + 1)}},M|{D^{(1:t)}})}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}}}  \\
+   \begin{array}{l}
+  = \frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M){\sigma ^{'(\cdot t + 1)}}({X^{(t + 1)}},M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ 
+  = \frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M){\sigma ^{'(.t + 1)}}({X^{(t + 1)}}){\sigma ^{'(t)}}(M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ 
+ \end{array}  \\
+\end{array}\]
+\\
+
+\[\begin{array}{l}
+ \sigma {'^{(t + 1)}}({X^{(t + 1)}}) = \sum\nolimits_M {\sigma {'^{(t + 1)}}({X^{(t + 1)}},M)}  \\ \\
+  = \sum\limits_M {\frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M)\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\sigma {'^{(t)}}(M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}}}  \\ \\
+  = \frac{{\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\sum\limits_M {P({D^{(t + 1)}}|{X^{(t + 1)}},M)\sigma {'^{(t)}}(M)} }}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ \\
+  = \frac{{\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\prod\limits_k {\sum\limits_{{M_k}} {P({D^{(t + 1)}_{k}}|{X^{(t + 1)}},{M_k})\sigma {'^{(t)}}({M_k})} } }}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ 
+ \end{array}\]
+ \\
+ \\
+ 
+ \[\begin{array}{l}
+ \sigma {'^{(t + 1)}}({M_k}) = \sum\nolimits_{{X^{(t + 1)}},{M_{j,j \ne k}}} {\sigma {'^{(t + 1)}}({X^{(t + 1)}},M)}  \\ \\
+  = \sum\limits_{{X^{(t + 1)}},{M_{j,j \ne k}}} {\frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M)\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\sigma {'^{(t)}}(M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}}}  \\ \\
+  = \frac{{\sum\limits_{{X^{(t + 1)}}} {P({D^{(t + 1)}_{k}}|{X^{(t + 1)}},{M_k})\sigma {'^{(.t + 1)}}({X^{(t + 1)}})} \sigma {'^{(t)}}({M_k})\prod\limits_{j,j \ne k} {\sum\limits_j {P({D^{(t + 1)}_{j}}|{X^{(t + 1)}},{M_j})\sigma {'^{(t)}}({M_j})} } }}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ \\
+ \end{array}\]
+
+\newpage
+\begin{center}
+\paragraph{Part 2}
+\end{center}
+
+\paragraph{Answer 1}  
+
+\[\begin{array}{l}
+ \sigma {'^{(t + 1)}}({X^{(t + 1)}}) = \sum\nolimits_M {\sigma {'^{(t + 1)}}({X^{(t + 1)}},M)}  \\ \\
+  = \sum\limits_M {\frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M)\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\sigma {'^{(t)}}(M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}}}  \\ \\
+  = \frac{{\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\sum\limits_M {P({D^{(t + 1)}}|{X^{(t + 1)}},M)\sigma {'^{(t)}}(M)} }}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ \\
+  = \frac{{\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\prod\limits_k {\sum\limits_{{M_k}} {P({D^{(t + 1)}_{k}}|{X^{(t + 1)}},{M_k})\sigma {'^{(t)}}({M_k})} } }}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ 
+ \end{array}\]
+ \\
+ \\
+ 
+ \[\begin{array}{l}
+ \sigma {'^{(t + 1)}}({M_k}) = \sum\nolimits_{{X^{(t + 1)}},{M_{j,j \ne k}}} {\sigma {'^{(t + 1)}}({X^{(t + 1)}},M)}  \\ \\
+  = \sum\limits_{{X^{(t + 1)}},{M_{j,j \ne k}}} {\frac{{P({D^{(t + 1)}}|{X^{(t + 1)}},M)\sigma {'^{(.t + 1)}}({X^{(t + 1)}})\sigma {'^{(t)}}(M)}}{{P({D^{(t + 1)}}|{D^{(1:t)}})}}}  \\ \\
+  = \frac{{\sum\limits_{{X^{(t + 1)}}} {P({D^{(t + 1)}_{k}}|{X^{(t + 1)}},{M_k})\sigma {'^{(.t + 1)}}({X^{(t + 1)}})} \sigma {'^{(t)}}({M_k})\prod\limits_{j,j \ne k} {\sum\limits_j {P({D^{(t + 1)}_{j}}|{X^{(t + 1)}},{M_j})\sigma {'^{(t)}}({M_j})} } }}{{P({D^{(t + 1)}}|{D^{(1:t)}})}} \\ \\
+ \end{array}\]
+
+ 
+\paragraph{Answer 2}
+
+In a forward inference network each pair of states $s,s^{'}$ is considered, hence in present case with $N^{2}$ states we have a space requirement of $O((K+1)N^{4})$. (Pg 654 of text book)\\
+Cascading Unrolled DBNs maintains a linear complexity with the number of states, hence time would be $O(T(K+1)N^{2})$ for T cycles.
+
+\paragraph{Answer 3} ??
+
+\paragraph{Answer 4}
+Consider the event in which we get a spurious reading from the sensor in some particular time frame, in this case an Unrolled DBN will produce more accurate localization results than Forward Inference. Thus smoothing achieved as in case of an unrolled DBN helps reduce the effect of temporary fluctuations and outliers.
+ 
+\paragraph{Answer 5} **
+
+\paragraph{Answer 6} ? Will not change in unrolled DBN as the entire network over all time slices is considered at once. In the Forward Inference and Sliding window, the values will update themselves at each step.
+
+\paragraph{Answer 7} **
+
+\end{document}
